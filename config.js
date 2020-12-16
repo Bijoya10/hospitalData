@@ -1,12 +1,12 @@
 import firebase from "firebase";
 require("@firebase/firestore")
 var firebaseConfig = {
-  apiKey: "AIzaSyB_wzJH2gRykxI5iF30y0u3p4OXSZNvAkQ",
-  authDomain: "hospital-yusuf.firebaseapp.com",
-  projectId: "hospital-yusuf",
-  storageBucket: "hospital-yusuf.appspot.com",
-  messagingSenderId: "264540037943",
-  appId: "1:264540037943:web:4c1d0b24cb094e9f6170b2"
+  apiKey: "AIzaSyBSNmhH4KdGrk15szh73qq4W6RwfHOiLWg",
+  authDomain: "hospitaladvisor-87d7e.firebaseapp.com",
+  projectId: "hospitaladvisor-87d7e",
+  storageBucket: "hospitaladvisor-87d7e.appspot.com",
+  messagingSenderId: "683109745788",
+  appId: "1:683109745788:web:a87e55989e07b839ff35f9"
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);

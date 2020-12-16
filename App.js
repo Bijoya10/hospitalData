@@ -1,59 +1,79 @@
 
 import React from 'react';
-import { StyleSheet, Text, View,TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View,TouchableOpacity,TextInput } from 'react-native';
+import db from "./config"
+import firebase from "firebase";
 
 export default class App extends React.Component{
+  constructor(){
+    super();
+    this.state={
+      name:"",
+      hospitalId:"",
+        longitude:null,
+        latitude:null
+      
+    }
+  }
+  addNew=()=>{
+    db.collection("hospital").add({
+      name:this.state.name,
+      position:{longitude:this.state.longitude,latitude:this.state.latitude},
+      hospitalId:this.state.hospitalId
+    })
+
+    this.setState({
+      name:"",
+        longitude:null,
+        latitude:null
+      
+    })
+  }
 render() {
   return (
     <View style={{backgroundColor:"#FED8B1"}}>
-     {this.showModal()}
-      <Image
-        style={styles.imageIcon}
-        source={require('../assets/AnimationBandeauHaut_6E2BDD7_FR.gif')}
-      />
-      <Text style={styles.text1}>Enter Your Email And Password To Login</Text>
-      <Text style={styles.text3}>(OR)</Text>
-
-      <Text style={styles.text2}>
-        If You Are New User Then Type Email And Password Then Click On SignUp
-      </Text>
       <TextInput
-                keyboardType={"email-address"}
-
         style={styles.input}
-        placeholder="Email"
+        placeholder="hospitalID e.g H001"
         onChangeText={(text) => {
-          this.setState({ emailId: text });
+          this.setState({ hospitalId: text });
         }}
-        value={this.state.emailId}
+        value={this.state.hospitalId}
       />
 
       <TextInput
         style={styles.input}
-        placeholder="Password"
-        secureTextEntry={true}
+        placeholder="name"
         onChangeText={(text) => {
-          this.setState({ password: text });
+          this.setState({ name: text });
         }}
-        value={this.state.password}
+        value={this.state.name}
+      />
+
+      <TextInput
+        style={styles.input}
+        placeholder="longitude"
+        onChangeText={(text) => {
+          this.setState({ longitude: text });
+        }}
+        value={this.state.longitude}
+      />
+
+<TextInput
+        style={styles.input}
+        placeholder="latitude"
+        onChangeText={(text) => {
+          this.setState({ latitude: text });
+        }}
+        value={this.state.latitude}
       />
       <TouchableOpacity
         style={styles.button}
         onPress={() => {
-          this.userLogin(this.state.emailId, this.state.password);
-        }}>
-        <Text>Login</Text>
+this.addNew()        }}>
+        <Text>add</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => {
-          this.setState({ isModalVisible: true });
-
-          
-        }}>
-        <Text>Signup</Text>
-      </TouchableOpacity>
     </View>
   );
 }
