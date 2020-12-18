@@ -11,7 +11,8 @@ export default class App extends React.Component{
       name:"",
       hospitalId:"",
         longitude:null,
-        latitude:null
+        latitude:null,
+        website:null
       
     }
   }
@@ -19,7 +20,8 @@ export default class App extends React.Component{
     db.collection("hospital").add({
       name:this.state.name,
       position:{longitude:this.state.longitude,latitude:this.state.latitude},
-      hospitalId:this.state.hospitalId
+      hospitalId:this.state.hospitalId,
+      website:this.state.website
     })
 
     this.setState({
@@ -58,8 +60,7 @@ render() {
         }}
         value={this.state.longitude}
       />
-
-<TextInput
+      <TextInput
         style={styles.input}
         placeholder="latitude"
         onChangeText={(text) => {
@@ -67,6 +68,16 @@ render() {
         }}
         value={this.state.latitude}
       />
+       <TextInput
+        style={styles.input}
+        placeholder="webpage e.g. fernandezhospital.com"
+        onChangeText={(text) => {
+          this.setState({ website: text });
+        }}
+        value={this.state.website}
+      />
+
+
       <TouchableOpacity
         style={styles.button}
         onPress={() => {
