@@ -10,9 +10,9 @@ export default class App extends React.Component{
     this.state={
       name:"",
       hospitalId:"",
-        longitude:null,
-        latitude:null,
-        website:null
+      longitude:null,
+      latitude:null,
+      website:null
       
     }
   }
@@ -26,9 +26,10 @@ export default class App extends React.Component{
 
     this.setState({
       name:"",
-        longitude:null,
-        latitude:null
-      
+      hospitalId:"",
+      longitude:null,
+      latitude:null,
+      website:null      
     })
   }
 render() {
